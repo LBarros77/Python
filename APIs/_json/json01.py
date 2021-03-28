@@ -53,7 +53,7 @@ def deleteName():
         with open("names.json", "w") as fl:
             json.dump(name_list, fl)
     else:
-        showinfo(title="Informação", message="Para que um nome seja deletado ele precisa estar na lista")
+        showinfo(title="Informação", message="Para que um nome seja deletado, faz-se necessário estar na lista.")
     showList(show)
         
 '''
