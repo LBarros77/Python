@@ -1,21 +1,28 @@
-import json
 import requests
 
-city = input("Digite sua localização: ")
-my_key = "7ce79565160eb5e25c8c6194f99778d7"
+url = "https://currency-exchange.p.rapidapi.com/exchange"
 
-try:
-    url = f"http://api.openweathermap.org/data/2.5/forecast?q={city}&appid={my_key}"
-    requisition = requests.get(url)
-    requisition.raise_for_status()
-except EOFError as e:
-    print("Requisição não encontrada. ", e)
+def convertBrFor(toConvert="USD"):
+    querystring = {"from":"BRL","to":f"{toConvert}", "q":"1.0"}
 
-#load archive text
-dates = json.loads(requisition.text)
+    headers = {
+        'x-rapidapi-key': "efc14fb4a0msh42c27763b6f5e97p13a83ajsn5116d7350ab2",
+        'x-rapidapi-host': "currency-exchange.p.rapidapi.com"
+        }
 
-lst = dates["list"]
+    response = requests.request("GET", url, headers=headers, params=querystring)
 
-print(f"A temperatura média hoje de {city} é: ", end="")
-tempCeusios = lst[0]["main"]["temp"] - 273.15
-print(f"{tempCeusios:.2f}")
+    return float(response.text)
+
+
+brl = input("Digite um valor para à conversão: ")
+br_mony = brl.split(",")
+br_mony = float(".".join(br_mony))
+
+usd_converted = convertBrFor()
+eur_converted = convertBrFor("EUR")
+
+print(f"A cotação R$ 1,00 = USD {usd_converted:.3f}")
+print(f"A cotação R$ 1,00 = USD {eur_converted:.3f}")
+print(f"R$ {brl} = USD {(br_mony * usd_converted):.2f}")
+print(f"R$ {brl} = EUR {(br_mony * eur_converted):.2f}")
