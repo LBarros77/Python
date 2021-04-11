@@ -13,9 +13,10 @@ def translate(text, lang):
         }
 
     response = requests.request("POST", url, data=payload, headers=headers)
-    dates = json.loads(response.text)["data"]["translations"]
+    datas = json.loads(response.text)["data"]["translations"]
 
-    print(dates[0]["translatedText"])
+    print(datas[0]["translatedText"])
+
 
 language = input("Digite o idioma [en/es]: ")[:3].lower()
 phrase = input("Digite algo: ").split(" ")

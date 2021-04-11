@@ -1,0 +1,28 @@
+[ 
+{ 
+ "aluno":"João", 
+ "nota1": 8, 
+ "nota2": 7 
+}, 
+{ 
+ "aluno":"Maria", 
+ "nota1": 4, 
+ "nota2": 6 
+}, 
+{ 
+ "aluno":"Pedro", 
+ "nota1": 9, 
+ "nota2": 5 
+}, 
+{ 
+ "aluno":"Ana", 
+ "nota1": 3, 
+ "nota2": 8 
+}, 
+{ 
+"aluno":"Vera", 
+"nota1": 7, 
+"nota2": 10 
+} 
+]
+   
